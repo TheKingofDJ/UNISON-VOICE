@@ -357,6 +357,7 @@ redistribution.
 
 ## Contact
 
-The source one-pager lists **Zhale Daud** (`zhale.daud@outlook.com`) and
-**Mira Holzer** (`m.holzer@posteo.de`) as project contacts. **Ayush Diyundi**
-(`AyushDiyundioffi@gmail.com`) is also a project contact.
+**Zhale Daud** (`zhale.daud@outlook.com`)
+**Ayush Diyundi** (`AyushDiyundioffi@gmail.com`)
+**Mira Holzer** (`m.holzer@posteo.de`)
+**Jonathan Jeschke** (`jeschke-j@web.de`)
