@@ -1,0 +1,188 @@
+% Zweckbestimmung (Intended Purpose), Version 1.0 (final)
+% Übersetzen im Ordner docs/tex:  lualatex Unison_Voice_Zweckbestimmung_v1.0.tex  (zweimal)
+\documentclass[a4paper]{article}
+\usepackage{unisonvoice}
+\usepackage{needspace}
+\hypersetup{pdftitle={Unison Voice · Zweckbestimmung (Version 1.0)},
+  pdfauthor={Unison Voice Team (verantwortlich: Jonathan)},
+  pdfsubject={Zweckbestimmung / Intended Purpose}}
+\uvfooter{Unison Voice \enspace·\enspace Zweckbestimmung \enspace·\enspace Version 1.0 vom 25.11.2026 \enspace·\enspace intern, nicht zur Weitergabe}
+
+\begin{document}
+
+\uvtitle{Zweckbestimmung (Intended Purpose)}{Version 1.0 (final), mit den Entscheidungen vom 19.11. und 25.11.2026}
+
+\begin{uvmeta}{}
+Stand & 25.11.2026 \\
+Verantwortlich & Jonathan (AI/ML und technische Architektur), übernommen aus Joshuas Aufgaben \\
+Status & Final (Version 1.0), festgelegt am 25.11.2026. Alle inhaltlichen Fragen sind entschieden. Die Klärung von MDR und KI-Verordnung baut auf dieser Fassung auf und steht noch aus (Abschnitt 10); ändert sie etwas, folgt Version 1.1 \\
+Grundlage & Notion „Unison Voice – INDIS“: Challenge, Zielgruppenanalyse v1.0, Architektur v2, Legal Checklist, One Pager, Fragebogen, Meeting-Notizen, Weekly 19.11.2026, Entscheidungen vom 25.11.2026 (siehe Abschnitt 11) \\
+Änderungen & v0.2: drei wählbare Ausgabemodi. v0.3: Modus 2 ist voreingestellt, Modus 1 hat eine Stopp-Taste, Modus 3 enthält die Prüfung. v0.4: Zielgruppe sind Erwachsene ab 18 mit motorischen Sprechstörungen wie Dysarthrie; Aphasie und Kinder gehören nicht mehr dazu, Kinder kommen später als Erweiterung; Verzögerung unter 3 Sekunden; sehr einfache Bedienung. v0.5: Sprechapraxie gehört zur Zielgruppe, Stottern vorerst nicht; die Verzögerung wird am Prototyp gemessen; therapienahe Funktionen sind gestrichen; die eigene Stimme kommt nach dem MVP und gehört nicht zum INDIS-Umfang. v1.0: als finale Fassung festgelegt, inhaltlich wie v0.5 \\
+\end{uvmeta}
+
+\begin{uvhint}
+\textbf{Hinweis:} Dieses Dokument ist eine fachliche Arbeitsgrundlage und keine Rechtsberatung. Alle regulatorischen Einschätzungen in Abschnitt 9 sind vorläufig und werden in der geplanten Rechtsberatung (DHBW-Gründungszentrum oder IHK) geprüft.
+\end{uvhint}
+
+\section{Warum wir eine Zweckbestimmung brauchen}
+
+Die Zweckbestimmung legt fest, wofür Unison Voice gedacht ist und wofür nicht. Nach Art.~2 Nr.~12 der Medizinprodukteverordnung (MDR) ist das die Verwendung, die der Hersteller in Kennzeichnung, Gebrauchsanweisung, Werbe- und Verkaufsmaterial und klinischer Bewertung angibt. Damit zählen auch One Pager, Pitches, Blog und Website.
+
+Von der Zweckbestimmung hängt ab, ob Unison Voice ein Medizinprodukt ist, wie es nach der KI-Verordnung eingestuft wird, welche Einwilligungen nach DSGVO nötig sind und welche Aussagen wir nach außen machen dürfen. Sie ist außerdem die Grundlage für die Einwilligungserklärung (Mira) und den One Pager (Zhale).
+
+\section{Zweckbestimmung (Kernaussage)}
+
+\begin{uvcore}
+Unison Voice ist eine Software für Smartphones, die \textbf{Erwachsene mit motorischen Sprechstörungen} bei alltäglichen Gesprächen in deutscher Sprache unterstützt, zum Beispiel bei Dysarthrie nach einem Schlaganfall oder bei Parkinson oder bei Sprechapraxie. Die Software lernt über ein persönliches Sprachprofil die individuelle Aussprache der nutzenden Person kennen und macht ihre eigene Äußerung für andere verständlich.
+
+\textbf{Die nutzende Person wählt, wie das geschieht:} als Sprachausgabe erst nach ihrer Prüfung (voreingestellt), als direkte Sprachausgabe nach dem Satzende mit Stopp-Taste oder nach ihrer Prüfung als Anzeige auf dem Display ohne Ton.
+
+Unison Voice dient ausschließlich der Verständigung mit Gesprächspartner:innen. Es stellt \textbf{keine Diagnose}, ersetzt \textbf{keine Therapie} und bewertet weder die Sprechfähigkeit noch den Gesundheitszustand.
+\end{uvcore}
+
+\section{Vorgesehene Nutzende}
+
+\begin{uvtable}{colspec={X[1.15,l]X[1,l]X[2.1,l]},
+  column{1}={font=\uvtablefont\bfseries,fg=uvnavy},
+  row{1}={bg=uvnavy,fg=white,font=\uvtablefont\bfseries}}
+Gruppe & Rolle & Voraussetzungen und Grenzen \\
+Primär: Erwachsene mit motorischer Sprechstörung & Nutzen die App aktiv zum Sprechen & Ab 18 Jahren. Motorische Sprechstörungen: Dysarthrie, z.\,B. nach Schlaganfall oder Schädel-Hirn-Trauma, bei Parkinson, Multipler Sklerose, ALS oder Zerebralparese, sowie Sprechapraxie, meist nach Schlaganfall. Die App gleicht das Sprechen aus, nicht Wortfindung oder Sprachverständnis; tritt eine Sprechapraxie zusammen mit einer Aphasie auf, hilft sie nur beim Sprechen. Einwilligung selbst oder durch die rechtliche Betreuung \\
+Gesprächspartner:innen & Hören oder lesen die Ausgabe & Z.\,B. Verkauf, Praxis, Behörde, ÖPNV; keine Installation, keine Datenerhebung über sie \\
+Angehörige und Bezugspersonen & Unterstützen Einrichtung und Training & Nur mit Zustimmung der nutzenden Person \\
+Logopäd:innen & Können das Einrichten des Sprachprofils begleiten & Keine klinische Nutzung von Ergebnissen; die App ist kein Therapiewerkzeug \\
+\end{uvtable}
+
+\textbf{Nicht Teil dieser Zweckbestimmung} (Entscheidungen vom 19.11. und 25.11.2026):
+\begin{uvsmalllist}
+\item \textbf{Aphasie.} Bei Aphasie ist die Sprache selbst betroffen, nicht das Sprechen. Unison Voice gibt wieder, was gesagt wurde, nicht was gemeint war, und ergänzt keine Inhalte.
+\item \textbf{Stottern.} Vorerst nicht Teil der Zielgruppe (Entscheidung vom 25.11.2026).
+\item \textbf{Kinder und Jugendliche unter 18 Jahren.} Spätere Erweiterung. Die Recherche „Kinder und Jugendliche als Nutzende“ (Notion, 18.11.2026) bleibt die Grundlage. Vor einer Erweiterung müssen stehen: Einwilligung der Sorgeberechtigten und Zustimmung des Kindes, eine an Kinderstimmen angepasste Erkennung, eine kindgerechte Ausgabestimme, die Abstimmung mit Logopäd:innen, eine kindgerechte Bedienung mit Elternsperre ohne Werbung und Analyse-Dienste sowie ein Ethikvotum für Tests. Die Erweiterung braucht eine neue Fassung dieser Zweckbestimmung.
+\end{uvsmalllist}
+
+\section{Anwendungsumgebung}
+
+\begin{itemize}
+\item Alltagsgespräche von Angesicht zu Angesicht: Einkaufen, Termine in Praxis oder Behörde, Bus und Bahn, Familie, Freizeit.
+\item Smartphone mit iOS oder Android; Ausgabe als Text auf dem Display und als Sprache über den Lautsprecher.
+\item \textbf{Online-Modus:} Verarbeitung auf einem Server, nur mit ausdrücklicher Einwilligung; Audio wird im Arbeitsspeicher verarbeitet und nicht gespeichert.
+\item \textbf{Offline-Modus:} Verarbeitung nur auf dem Gerät, mit geringerer Erkennungsleistung, besonders bei stärkerer Ausprägung.
+\item Sprache: Deutsch. Weitere Sprachen sind nicht Teil dieser Zweckbestimmung.
+\end{itemize}
+
+\textbf{Ausgabemodi} (Beschluss im Weekly am 19.11.2026). Voreingestellt ist Modus~2. Die nutzende Person kann den Modus jederzeit wechseln. Die Spalte „Typischer Einsatz“ ist eine Annahme, die wir in den Interviews prüfen.
+
+\begin{uvtable}{colspec={X[1,l]X[2.6,l]X[1.5,l]},
+  column{1}={font=\uvtablefont\bfseries,fg=uvnavy},
+  row{1}={bg=uvnavy,fg=white,font=\uvtablefont\bfseries}}
+Modus & Ablauf & Typischer Einsatz (Annahme) \\
+1. Direkt & Sobald das Satzende erkannt ist, gibt die App die verständliche Fassung als Sprache und Text aus, ohne Prüfung durch die nutzende Person. Eine Stopp-Taste bricht die Ausgabe sofort ab. & Flüssige Gespräche, gut trainiertes Sprachprofil \\
+2. Mit Prüfung (Standard) & Rohtext, Vorschlag und Alternativen erscheinen zuerst. Die Ausgabe folgt erst nach Freigabe; die Person kann bearbeiten, verwerfen oder tippen. & Neues Profil, wichtige Gespräche, unsichere Erkennung \\
+3. Nur Anzeige & Prüfung und Freigabe wie in Modus 2. Danach erscheint die verständliche Fassung groß auf dem Display, ohne Ton. Das Gegenüber liest mit. & Laute oder sehr ruhige Umgebungen, Wunsch nach Diskretion \\
+\end{uvtable}
+
+\section{Was Unison Voice tut}
+
+Die Oberfläche ist sehr einfach und intuitiv bedienbar (Beschluss im Weekly am 19.11.2026). Jeder Schritt kommt mit möglichst wenigen Bedienhandlungen aus.
+
+\begin{enumerate}
+\item \textbf{Sprachprofil einrichten:} kurze, ermüdungsarme Aufnahmesitzungen, persönlicher Wortschatz und Phrasen; nur mit Einwilligung, jederzeit einsehbar und löschbar.
+\item \textbf{Sprache erfassen:} Aufnahme und Erkennung von Beginn und Ende einer Äußerung; die Pausenlänge ist individuell einstellbar, alternativ Tippen zum Senden.
+\item \textbf{Erkennen:} Spracherkennung mit Angabe, wie sicher das Ergebnis ist.
+\item \textbf{Verständliche Fassung vorschlagen:} Abgleich mit Phrasen und Wortschatz, Korrektur von Wortgrenzen und Grammatik. Keine neuen Inhalte, keine Änderung der Bedeutung.
+\item \textbf{Prüfen (Modus 2 und 3):} Rohtext, Vorschlag und Alternativen werden angezeigt; die Person nimmt an, bearbeitet, verwirft oder weicht auf Tippen oder Symbole aus. In Modus 1 entfällt dieser Schritt; eine Stopp-Taste bricht die laufende Ausgabe ab.
+\item \textbf{Ausgeben:} synthetische Stimme und Text (Modus 1 und 2) oder nur Text auf dem Display (Modus 3). Die synthetische Stimme ist als synthetisch erkennbar.
+\item \textbf{Nur mit Freigabe lernen:} Korrekturen werden nur gespeichert, wenn die Person zustimmt. Gespräche werden nicht heimlich zum Nachtrainieren verwendet.
+\end{enumerate}
+
+\section{Ausdrücklich nicht vorgesehen}
+
+Diese Ausschlüsse sind Teil der Zweckbestimmung. Sie halten das Produkt klar von Diagnose und Therapie getrennt und begrenzen das Risiko falscher Ausgaben.
+
+\begin{itemize}
+\item Diagnose, Früherkennung, Einstufung des Schweregrads oder Verlaufskontrolle einer Erkrankung.
+\item Therapie, Sprechtraining oder Übungsfeedback. Unison Voice ersetzt keine Logopädie.
+\item Informationen für medizinische Entscheidungen, z.\,B. die Weitergabe von Fortschrittsdaten an Behandelnde. Deshalb sind therapienahe Funktionen gestrichen (Entscheidung vom 25.11.2026, Abschnitt 10).
+\item Notfälle und sicherheitskritische Situationen: kein Ersatz für den Notruf oder für eine Person, die vermittelt.
+\item Rechtlich bedeutsame Erklärungen, z.\,B. die Einwilligung in eine Behandlung oder ein Vertragsabschluss, sollen nicht allein über die App erfolgen.
+\item Nutzung durch Kinder und Jugendliche unter 18 Jahren sowie Unterstützung bei Aphasie oder Stottern (siehe Abschnitt 3).
+\item Nachbildung der eigenen Stimme (Voice Cloning). Sie kommt frühestens nach dem MVP, gehört nicht zum INDIS-Umfang und braucht dann eine gesonderte Einwilligung.
+\item Telefonie und andere Sprachen als Deutsch.
+\item Identifizierung von Personen, Erkennung von Emotionen, Speicherung von Gesprächen ohne Einwilligung.
+\end{itemize}
+
+\section{Grenzen und Sicherheitsprinzipien}
+
+\begin{itemize}
+\item Die Erkennung kann falsch sein, vor allem bei stärkerer Ausprägung, Umgebungslärm und im Offline-Modus. Im Modus 1 kann ein falscher Satz ausgegeben werden, bevor die Person ihn sieht; die Stopp-Taste begrenzt den Schaden, Modus 2 und 3 verhindern ihn. Deshalb ist Modus 2 voreingestellt, und die App erklärt den Unterschied bei der Wahl des Modus.
+\item Das größte Risiko ist ein flüssiger, aber falscher Satz. Die App zeigt Unsicherheit an, statt sie zu verbergen.
+\item Die App gibt wieder, was gesagt wurde, nicht was gemeint war. Sie ergänzt keine Inhalte.
+\item Die Erkennung braucht verwertbare Lautäußerungen. Wo sie fehlen oder die Erkennung an einem Tag nicht klappt, bleiben Tippen, Symbole und gespeicherte Phrasen.
+\item \textbf{Verzögerung (Anforderung Z-04, Beschluss im Weekly am 19.11.2026):} Gewünscht ist, dass die verständliche Fassung in unter 3~Sekunden vorliegt. Dafür sollen Satzteile schon während des Sprechens laufend verarbeitet werden statt erst der ganze Satz. Gemessen wird, sobald ein Prototyp vorliegt, auf echten Geräten und getrennt von Sprechpause und Prüfzeit der nutzenden Person. Bis dahin ist der Wert ein Ziel, keine zugesicherte Eigenschaft.
+\item Die synthetische Stimme ist erkennbar; ein optionaler Hinweis informiert Gesprächspartner:innen.
+\item Sprachdaten gelten als Gesundheitsdaten. Profile sind jederzeit löschbar.
+\end{itemize}
+
+\section{Aussagen nach außen}
+
+Alles, was wir veröffentlichen, wird Teil der Zweckbestimmung. Diese Formulierungen passen zu ihr, diese sollten wir vermeiden:
+
+\begin{uvtable}{colspec={X[1,l]X[1,l]X[1.3,l]}}
+Passt & Vermeiden & Warum \\
+„Kommunikationshilfe für Alltagsgespräche“ & „Therapie“, „verbessert Ihr Sprechen“ & Therapieversprechen; würde die Einstufung verschärfen und fällt unter das Heilmittelwerbegesetz \\
+„für Erwachsene mit Sprechstörungen wie Dysarthrie oder Sprechapraxie“ & „für alle mit Sprach- und Sprechproblemen“, „für Kinder“ & Aphasie, Stottern und Kinder sind nicht Teil der Zweckbestimmung \\
+„lernt Ihre Aussprache kennen“ & „versteht jede Stimme“, „fehlerfrei“ & Nicht belegbar; Erkennung kann falsch sein \\
+„Sie wählen, ob die App direkt spricht, erst nach Ihrer Prüfung oder nur anzeigt“ & „spricht immer genau das, was Sie meinen“ & Im Modus 1 kann ein falscher Satz ausgegeben werden \\
+„in wenigen Sekunden“ (Ziel unter 3~s; Zahl erst nach Messung am Prototyp) & „in Echtzeit“ & Noch nicht gemessen \\
+„KI-App in Entwicklung“, „Forschungsprototyp“ & „medizinisch geprüft“, „zertifiziert“, „CE“ & Trifft nicht zu \\
+\end{uvtable}
+
+\textbf{Folgen für den One Pager:} „in Echtzeit“ (Fließtext und Kachel „Echtzeit für echte Gespräche“) durch „in wenigen Sekunden“ ersetzen; „Fünf Menschen“ auf vier ändern. Die Aphasie-Zahl (25.000+ Neuerkrankungen pro Jahr) passt nicht mehr, weil Aphasie nicht zur Zielgruppe gehört; sie sollte durch eine Zahl zu Dysarthrie oder motorischen Sprechstörungen ersetzt werden.
+
+\section{Vorläufige regulatorische Einordnung (zu prüfen)}
+
+\begin{uvtable}{colspec={X[0.75,l]X[1.6,l]X[1.6,l]},
+  column{1}={font=\uvtablefont\bfseries,fg=uvnavy},
+  row{1}={bg=uvnavy,fg=white,font=\uvtablefont\bfseries}}
+Rechtsrahmen & Vorläufige Einschätzung & Was daraus folgt \\
+MDR (EU) 2017/745 & Art.~2 Nr.~1 nennt als medizinischen Zweck auch die „Kompensierung von Verletzungen oder Behinderungen“. Software, die gezielt eine Sprechbehinderung ausgleicht, ist deshalb \textbf{wahrscheinlich ein Medizinprodukt}, auch wenn wir sie „Alltagshilfe“ nennen. Da sie keine Informationen für diagnostische oder therapeutische Entscheidungen liefert, wäre sie nach Anhang VIII Regel 11 voraussichtlich \textbf{Klasse I}. & Vor dem Inverkehrbringen: Qualitätsmanagement, technische Dokumentation, klinische Bewertung, Konformitätserklärung und CE-Kennzeichnung in Eigenverantwortung, Registrierung, Marktüberwachung. Für den INDIS-Prototyp: kein Inverkehrbringen. Zu klären, ob Tests mit Freiwilligen als klinische Prüfung gelten. Die Ausschlüsse in Abschnitt 6 sind die Voraussetzung dafür, dass Klasse I erreichbar bleibt. Modus 1 (Ausgabe ohne Prüfung) gehört ins Risikomanagement. \\
+KI-Verordnung (EU) 2024/1689 & Keine verbotene Praxis (Art.~5), keine Kategorie aus Anhang III. Nach Art.~6 Abs.~1 ist ein KI-System nur hochriskant, wenn das Produkt unter Anhang-I-Recht fällt \textbf{und} eine Konformitätsbewertung durch Dritte braucht. Klasse I braucht keine benannte Stelle; Unison Voice wäre damit \textbf{voraussichtlich nicht hochriskant}. & Weicht von der Legal Checklist ab („If a medical device: high-risk AI“) und muss geprüft werden. Unabhängig davon: Transparenzpflichten nach Art.~50 (synthetische Audioausgabe kennzeichnen) und KI-Kompetenz im Team nach Art.~4. \\
+DSGVO & Stimmaufnahmen von Menschen mit Sprechbehinderung gelten sehr wahrscheinlich als Gesundheitsdaten (Art.~9). & Ausdrückliche Einwilligung (Art.~9 Abs.~2 lit.~a), Datenschutz-Folgenabschätzung (Art.~35), Löschung (Art.~17). Bei rechtlicher Betreuung willigt die Betreuung ein, soweit ihr Aufgabenkreis das umfasst (zu prüfen). Für Interviews gilt die Datenregel von Ayush. \\
+HWG & Das Heilmittelwerbegesetz gilt für Werbung für Medizinprodukte. & Alle Aussagen nach außen an Abschnitt 8 ausrichten. \\
+\end{uvtable}
+
+\section{Entscheidungen und nächste Schritte}
+
+Am 19.11.2026 entschieden: Zielgruppe (Abschnitte 2 und 3), Ausgabemodi (Abschnitt 4), Verzögerungsziel (Abschnitt 7) und die Altersgrenze von 18 Jahren. Am 25.11.2026 entschieden und in diese Fassung übernommen:
+
+\begin{uvtable}{colspec={X[0.8,l]X[3.6,l]},
+  column{1}={font=\uvtablefont\bfseries,fg=uvnavy},
+  row{1}={bg=uvnavy,fg=white,font=\uvtablefont\bfseries}}
+Thema & Entscheidung \\
+Stottern & Vorerst nicht Teil der Zielgruppe (Abschnitt 3). \\
+Sprechapraxie & Teil der Zielgruppe (Abschnitte 2 und 3). Die App hilft beim Sprechen, nicht bei einer begleitenden Aphasie. \\
+Verzögerung & Wird gemessen, sobald ein Prototyp vorliegt. Bis dahin bleiben unter 3~Sekunden das gewünschte Zeitfenster (Abschnitt 7). \\
+Therapienahe Funktionen & Gestrichen, weil sie Abschnitt 6 widersprechen: Z-18 (Fortschrittsdaten an Logopäd:innen) und „Übungsfeedback“ (Persona Katrin). \\
+Eigene Stimme & Z-12 (Ausgabe in eigener synthetischer Stimme) kommt nach dem MVP und gehört nicht zum INDIS-Umfang (Abschnitt 6). \\
+\end{uvtable}
+
+\needspace{9\baselineskip}
+\textbf{Noch offen.} Beide Punkte bauen auf dieser Zweckbestimmung auf; führt ihr Ergebnis zu Änderungen, folgt Version 1.1.
+
+\begin{uvtable}{colspec={X[0.8,l]X[2.6,l]X[1,l]},
+  column{1}={font=\uvtablefont\bfseries,fg=uvnavy},
+  row{1}={bg=uvnavy,fg=white,font=\uvtablefont\bfseries}}
+Thema & Frage & Wer und bis wann \\
+MDR & Medizinprodukt ja oder nein, Klasse, gelten Tests mit Freiwilligen als klinische Prüfung? & Rechtsberatung (Zhale bucht), bis 08.12.2026 \\
+KI-Verordnung & Bestätigen, dass Art.~6 Abs.~1 nicht greift; Kennzeichnung der synthetischen Stimme nach Art.~50 & Rechtsberatung und Jonathans Risikonotiz, bis 08.12.2026 \\
+\end{uvtable}
+
+\textbf{Nächster Schritt:} Zielgruppenanalyse v1.0 und Anforderungskatalog an die Zweckbestimmung angleichen. Betroffen sind Z-04 (Verzögerung), Z-06, Z-12 und Z-18; die Segmente Aphasie, Kinder und Eltern sowie die Personas Mia und Günter entfallen oder werden als spätere Erweiterung geführt; Sprechapraxie kommt als Teil der Zielgruppe dazu.
+
+\section{Quellen}
+
+{\uvsmallfont
+\textbf{Intern (Notion „Unison Voice – INDIS“):} What’s the challenge?; Anforderungsanalyse, Teil 1: Zielgruppenanalyse v1.0 (22.10.2026); Unison Voice – Revised Architecture, Risks and Plan of Action v2 (28.10.2026); Unison Voice – Legal Checklist (22.10.2026); Unison Voice One Pager; Questionaire Prep; First Harald \& Ina Meeting (28.10.2026); Ideas; Plan to 25.11 (mit den Beschlüssen des Weeklys vom 19.11.2026); Entscheidungen zu den offenen Punkten vom 25.11.2026; Recherche: Kinder und Jugendliche als Nutzende (18.11.2026).
+
+\textbf{Rechtstexte:} Verordnung (EU) 2017/745 (MDR), Art.~2 Nr.~1 und 12, Anhang VIII Regel 11, eur-lex.europa.eu/eli/reg/2017/745/oj · Verordnung (EU) 2024/1689 (KI-Verordnung), Art.~4, 5, 6 und 50, eur-lex.europa.eu/eli/reg/2024/1689/oj · Verordnung (EU) 2016/679 (DSGVO), Art.~9, 17 und 35, eur-lex.europa.eu/eli/reg/2016/679/oj · Heilmittelwerbegesetz (HWG).\par}
+
+\end{document}

@@ -1,0 +1,136 @@
+% unisonvoice.sty -- Hausstil für Unison-Voice-Dokumente (LuaLaTeX)
+% Nachbau des Layouts der Zweckbestimmung v0.3: A4, 20 mm Rand,
+% Navy-Balken mit Cyan-Linie oben, Segoe UI, Fußzeile in Petrol.
+%
+% Benutzung:
+%   \documentclass[a4paper]{article}
+%   \usepackage{unisonvoice}
+%   \uvfooter{Unison Voice · Titel · Version · intern}
+%   \begin{document}
+%   \uvtitle{Titel}{Untertitel}
+%   ...
+% Übersetzen: lualatex datei.tex (zweimal, wegen Seitenzahlen in Tabellen)
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{unisonvoice}[2026/11/25 Unison Voice house style]
+
+\RequirePackage{iftex}
+\RequireLuaTeX
+\RequirePackage[ngerman]{babel}
+\RequirePackage{fontspec}
+\RequirePackage[a4paper,left=20mm,right=20mm,top=20mm,bottom=24mm,footskip=12mm]{geometry}
+\RequirePackage{xcolor}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{tabularray}
+\UseTblrLibrary{varwidth}
+\RequirePackage[hidelinks]{hyperref}
+
+% ---------- Farben ----------
+\definecolor{uvnavy}{HTML}{21455C}   % Balken, Überschriften, Tabellenkopf
+\definecolor{uvcyan}{HTML}{16C4E3}   % Linie unter dem Balken
+\definecolor{uvteal}{HTML}{1F7B9A}   % Untertitel, Fußzeile
+\definecolor{uvblue}{HTML}{1595B6}   % Kennzeile, Aufzählungszeichen, Kernaussage
+\definecolor{uvtext}{HTML}{081827}   % Fließtext
+\definecolor{uvrule}{HTML}{C9E3EC}   % Tabellenlinien
+\definecolor{uvlight}{HTML}{EAF8FC}  % Kernaussage, Tabellenzeilen
+\definecolor{uvhintbg}{HTML}{FFF6E5} % Hinweiskasten
+\definecolor{uvhintbar}{HTML}{E0A030}
+
+% ---------- Schrift ----------
+% Segoe UI (Windows). Ohne Segoe UI wird TeX Gyre Heros genutzt.
+\IfFontExistsTF{Segoe UI}{%
+  \setmainfont{Segoe UI}[BoldFont={Segoe UI Bold},ItalicFont={Segoe UI Italic},BoldItalicFont={Segoe UI Bold Italic}]%
+}{%
+  \setmainfont{TeX Gyre Heros}%
+}
+\renewcommand\normalsize{\fontsize{9.6pt}{13.6pt}\selectfont}
+\newcommand\uvtablefont{\fontsize{8.6pt}{11.6pt}\selectfont}
+\newcommand\uvsmallfont{\fontsize{8.4pt}{11.4pt}\selectfont}
+\newcommand\uvcorefont{\fontsize{10.4pt}{15pt}\selectfont}
+\RequirePackage{ragged2e}
+\AtBeginDocument{\color{uvtext}\normalsize\RaggedRight}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\frenchspacing
+\emergencystretch=1.5em
+
+% ---------- Seitenkopf: Balken ----------
+\AddToHook{shipout/background}{%
+  \put(0,-6mm){\textcolor{uvnavy}{\rule{\paperwidth}{6mm}}}%
+  \put(0,-7mm){\textcolor{uvcyan}{\rule{\paperwidth}{1mm}}}%
+}
+
+% ---------- Fußzeile ----------
+\newcommand\uv@footer{}
+\newcommand\uvfooter[1]{\renewcommand\uv@footer{#1}}
+\fancypagestyle{uv}{%
+  \fancyhf{}%
+  \renewcommand\headrulewidth{0pt}%
+  \fancyfoot[L]{\fontsize{7.5pt}{9pt}\selectfont\color{uvteal}\uv@footer}%
+  \fancyfoot[R]{\fontsize{7.5pt}{9pt}\selectfont\color{uvteal}Seite \thepage}%
+}
+\pagestyle{uv}
+
+% ---------- Titelblock ----------
+\newcommand\uvkicker{UNISON VOICE · SPEAK WITHOUT LIMITS}
+\newcommand\uvtitle[2]{%
+  \vspace*{4mm}%
+  {\fontsize{8.5pt}{10pt}\selectfont\bfseries\color{uvblue}\uvkicker\par}\vspace{4pt}%
+  {\fontsize{21pt}{24pt}\selectfont\bfseries\color{uvnavy}#1\par}\vspace{2pt}%
+  {\fontsize{11pt}{13pt}\selectfont\color{uvteal}#2\par}\vspace{8pt}%
+}
+
+% ---------- Überschriften ----------
+\setcounter{secnumdepth}{1}
+\titleformat{\section}{\fontsize{12.5pt}{15pt}\selectfont\bfseries\color{uvnavy}}{\thesection.}{0.35em}{}
+\titlespacing*{\section}{0pt}{12pt}{3pt}
+\titleformat{\subsection}{\normalsize\bfseries\color{uvnavy}}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{8pt}{2pt}
+
+% ---------- Listen ----------
+\setlist{nosep,itemsep=3pt,topsep=2pt,leftmargin=12pt}
+\setlist[itemize]{label={\color{uvblue}\fontsize{7pt}{7pt}\selectfont\textbullet}}
+\setlist[enumerate]{label={\color{uvblue}\bfseries\fontsize{8.5pt}{10pt}\selectfont\arabic*.},leftmargin=14pt}
+\newlist{uvsmalllist}{itemize}{1}
+\setlist[uvsmalllist]{label={\color{uvblue}\fontsize{6pt}{6pt}\selectfont\textbullet},nosep,itemsep=2pt,topsep=2pt,leftmargin=10pt,before=\uvsmallfont}
+
+% ---------- Kästen ----------
+\newtcolorbox{uvhint}{enhanced,breakable,frame hidden,sharp corners,boxrule=0pt,
+  colback=uvhintbg,borderline west={3pt}{0pt}{uvhintbar},
+  left=10pt,right=8pt,top=6pt,bottom=6pt,before skip=6pt,after skip=8pt,
+  fontupper=\uvsmallfont,before upper=\RaggedRight}
+\newtcolorbox{uvcore}{enhanced,breakable,frame hidden,sharp corners,boxrule=0pt,
+  colback=uvlight,borderline west={3pt}{0pt}{uvblue},
+  left=10pt,right=10pt,top=7pt,bottom=7pt,before skip=6pt,after skip=8pt,
+  fontupper=\uvcorefont,parbox=false,before upper={\setlength{\parskip}{6pt}\RaggedRight}}
+
+% ---------- Tabellen ----------
+% Metadaten oben: \begin{uvmeta} Stand & 25.11.2026 \\ ... \end{uvmeta}
+\NewTblrEnviron{uvmeta}
+\SetTblrInner[uvmeta]{colspec={Q[32mm,l,font=\uvtablefont\bfseries,fg=uvnavy]X[l,font=\uvtablefont]},
+  hline{2-Z}={0.5pt,uvrule},rowsep=3pt,leftsep=0pt,rightsep=4pt}
+\SetTblrOuter[uvmeta]{long,theme=uv,presep=2pt,postsep=4pt}
+
+% Datentabelle mit Navy-Kopf und abwechselnden Zeilen, bricht über Seiten um
+% und wiederholt den Kopf: \begin{uvtable}{colspec={X[2]X[3]}} ... \end{uvtable}
+% Für eine fette erste Spalte (Kopfzeile danach erneut setzen):
+%   \begin{uvtable}{colspec={...},
+%     column{1}={font=\uvtablefont\bfseries,fg=uvnavy},
+%     row{1}={bg=uvnavy,fg=white,font=\uvtablefont\bfseries}}
+\NewTblrTheme{uv}{%
+  \DefTblrTemplate{caption}{default}{}%
+  \DefTblrTemplate{capcont}{default}{}%
+  \DefTblrTemplate{conthead}{default}{}%
+  \DefTblrTemplate{contfoot}{default}{}%
+}
+\NewTblrEnviron{uvtable}
+\SetTblrOuter[uvtable]{long,theme=uv,presep=4pt,postsep=6pt}
+\SetTblrInner[uvtable]{cells={font=\uvtablefont,valign=t},
+  hlines={0.5pt,uvrule},vlines={0.5pt,uvrule},
+  row{odd[3]}={bg=uvlight},
+  row{1}={bg=uvnavy,fg=white,font=\uvtablefont\bfseries},
+  rowhead=1,rowsep=3.5pt,colsep=5pt}
+
+\endinput
